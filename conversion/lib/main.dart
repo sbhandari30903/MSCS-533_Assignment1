@@ -248,10 +248,10 @@ class _ConversionPageState extends State<ConversionPage> {
             // Result display card
             if (result.isNotEmpty)
               Text(
-                '${_inputController.text} $fromUnit are $result $toUnit',
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  color: Colors.grey, // Added grey color for result text
-                ),
+                '${double.parse(_inputController.text)} $fromUnit are $result $toUnit',
+                style: Theme.of(
+                  context,
+                ).textTheme.headlineSmall?.copyWith(color: Colors.grey),
                 textAlign: TextAlign.center,
               ),
           ],

@@ -153,7 +153,7 @@ String formatResult(double value) {
     return '0';
   }
   return value
-      .toStringAsFixed(6)
+      .toStringAsFixed(3)
       .replaceAll(RegExp(r'0*$'), '')
       .replaceAll(RegExp(r'\.$'), '');
 }
