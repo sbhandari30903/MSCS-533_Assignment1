@@ -115,37 +115,72 @@ class _ConversionPageState extends State<ConversionPage> {
             // Input value card
             Text(
               'Value',
-              style: Theme.of(context).textTheme.titleLarge,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: Colors.grey, // Changed text color to grey
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
             TextField(
               controller: _inputController,
               keyboardType: TextInputType.number,
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 24),
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
+              textAlign: TextAlign.left, // Changed from center to left
+              style: const TextStyle(
+                fontSize: 24,
+                color: Color.fromARGB(
+                  255,
+                  8,
+                  133,
+                  236,
+                ), // Added blue color for input text
+              ),
+              decoration: InputDecoration(
+                border: UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: const Color.fromARGB(255, 8, 133, 236),
+                  ),
+                ),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: const Color.fromARGB(255, 8, 133, 236),
+                  ),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: const Color.fromARGB(255, 8, 133, 236),
+                    width: 2,
+                  ),
+                ),
                 hintText: 'Enter value to convert',
+                hintStyle: TextStyle(
+                  color: Colors.grey,
+                ), // Optional: style for hint text
               ),
             ),
             const SizedBox(height: 20),
             // Unit selection card
             Text(
               'From',
-              style: Theme.of(context).textTheme.titleLarge,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: Colors.grey, // Changed text color to grey
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
             DropdownButton<String>(
               value: fromUnit,
               isExpanded: true,
-              alignment: Alignment.center,
+              alignment: Alignment.centerLeft, // Change to left alignment
+              style: const TextStyle(
+                fontSize: 18,
+                color: Color.fromARGB(255, 8, 133, 236), // Add blue color
+              ),
               items:
                   getAllUnits().map((String unit) {
                     return DropdownMenuItem<String>(
                       value: unit,
-                      alignment: Alignment.center,
+                      alignment:
+                          Alignment.centerLeft, // Change to left alignment
                       child: Text(unit),
                     );
                   }).toList(),
@@ -154,19 +189,26 @@ class _ConversionPageState extends State<ConversionPage> {
             const SizedBox(height: 20),
             Text(
               'To',
-              style: Theme.of(context).textTheme.titleLarge,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                color: Colors.grey, // Changed text color to grey
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
             DropdownButton<String>(
               value: toUnit,
               isExpanded: true,
-              alignment: Alignment.center,
+              alignment: Alignment.centerLeft, // Change to left alignment
+              style: const TextStyle(
+                fontSize: 18,
+                color: Color.fromARGB(255, 8, 133, 236), // Add blue color
+              ),
               items:
                   measures[getMeasureType(fromUnit)]?.map((String unit) {
                     return DropdownMenuItem<String>(
                       value: unit,
-                      alignment: Alignment.center,
+                      alignment:
+                          Alignment.centerLeft, // Change to left alignment
                       child: Text(unit),
                     );
                   }).toList(),
@@ -207,7 +249,9 @@ class _ConversionPageState extends State<ConversionPage> {
             if (result.isNotEmpty)
               Text(
                 '${_inputController.text} $fromUnit are $result $toUnit',
-                style: Theme.of(context).textTheme.headlineSmall,
+                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  color: Colors.grey, // Added grey color for result text
+                ),
                 textAlign: TextAlign.center,
               ),
           ],
