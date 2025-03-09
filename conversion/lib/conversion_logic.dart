@@ -4,6 +4,7 @@ final Map<String, List<String>> measures = {
     'Miles',
     'Meters',
     'Yards',
+    'Feet',
     'Kilograms',
     'Pounds',
     'Grams',
@@ -12,7 +13,7 @@ final Map<String, List<String>> measures = {
     'Fahrenheit',
     'Kelvin',
   ],
-  'Length': ['Kilometers', 'Miles', 'Meters', 'Yards'],
+  'Length': ['Kilometers', 'Miles', 'Meters', 'Yards', 'Feet'], // Added Feet
   'Weight': ['Kilograms', 'Pounds', 'Grams', 'Ounces'],
   'Temperature': ['Celsius', 'Fahrenheit', 'Kelvin'],
 };
@@ -44,6 +45,7 @@ double convert(String measure, String from, String to, double value) {
   }
 }
 
+// Update the convertLength function to handle Feet
 double convertLength(String from, String to, double value) {
   // Convert to meters first (base unit)
   double inMeters;
@@ -56,6 +58,9 @@ double convertLength(String from, String to, double value) {
       break;
     case 'Yards':
       inMeters = value * 0.9144;
+      break;
+    case 'Feet':
+      inMeters = value * 0.3048; // Added Feet conversion
       break;
     case 'Meters':
       inMeters = value;
@@ -72,6 +77,8 @@ double convertLength(String from, String to, double value) {
       return inMeters / 1609.34;
     case 'Yards':
       return inMeters / 0.9144;
+    case 'Feet':
+      return inMeters / 0.3048; // Added Feet conversion
     case 'Meters':
       return inMeters;
     default:
